@@ -6,9 +6,12 @@
 class Expro
 {
 public:
-	Expro();
-	Expro(std::string source);
+	Expro() = delete;
+	explicit Expro(std::string source);
 	~Expro();
+
+private:
+	te_expr expr;
 };
 
 #endif // !_EXPRO_H_

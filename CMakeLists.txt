@@ -2,4 +2,15 @@
 
 project ("expro")
 
-add_subdirectory ("deps" "src")
+add_library (expro
+  deps/tinyexpr.h
+  deps/tinyexpr.c
+  src/expro.h
+  src/expro.cc
+)
+
+target_include_directories (expro PUBLIC deps)
+
+add_executable(expro-test test/main.cc)
+target_include_directories (expro-test PUBLIC src)
+target_link_libraries(expro-test expro)
