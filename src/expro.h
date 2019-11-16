@@ -11,56 +11,56 @@
 class ExproException : public std::exception
 {
 public:
-	ExproException(std::string info)
-	{
-		_info = info.c_str();
-	}
-	const char* what()
-	{
-		return _info;
-	}
+    ExproException(std::string info)
+    {
+        _info = info.c_str();
+    }
+    const char* what()
+    {
+        return _info;
+    }
 private:
-	const char* _info;
+    const char* _info;
 };
 
 class Expro
 {
 public:
-	Expro() = delete;
-	explicit Expro(std::string source);
-	~Expro();
+    Expro() = delete;
+    explicit Expro(std::string source);
+    ~Expro();
 
 public:
-	using var = std::pair<std::string, double*>;
-	using varList = std::vector<var>;
+    using var = std::pair<std::string, double*>;
+    using varList = std::vector<var>;
 
-	double value();
+    double value();
 
-	Expro parse(varList variables = { {} });
+    Expro parse(varList variables = { {} });
 
-	using function0 = double(*)(void);
-	using function1 = double(*)(double);
-	using function2 = double(*)(double, double);
-	using function3 = double(*)(double, double, double);
-	using function4 = double(*)(double, double, double, double);
-	using function5 = double(*)(double, double, double, double, double);
-	using function6 = double(*)(double, double, double, double, double, double);
-	using function7 = double(*)(double, double, double, double, double, double, double);
+    using function0 = double(*)(void);
+    using function1 = double(*)(double);
+    using function2 = double(*)(double, double);
+    using function3 = double(*)(double, double, double);
+    using function4 = double(*)(double, double, double, double);
+    using function5 = double(*)(double, double, double, double, double);
+    using function6 = double(*)(double, double, double, double, double, double);
+    using function7 = double(*)(double, double, double, double, double, double, double);
 
-	Expro bind(std::string name, function0 function);
-	Expro bind(std::string name, function1 function);
-	Expro bind(std::string name, function2 function);
-	Expro bind(std::string name, function3 function);
-	Expro bind(std::string name, function4 function);
-	Expro bind(std::string name, function5 function);
-	Expro bind(std::string name, function6 function);
-	Expro bind(std::string name, function7 function);
+    Expro bind(std::string name, function0 function);
+    Expro bind(std::string name, function1 function);
+    Expro bind(std::string name, function2 function);
+    Expro bind(std::string name, function3 function);
+    Expro bind(std::string name, function4 function);
+    Expro bind(std::string name, function5 function);
+    Expro bind(std::string name, function6 function);
+    Expro bind(std::string name, function7 function);
 
 private:
-	std::string source;
-	te_expr* expr;
-	varList variables;
-	double result;
+    std::string source;
+    te_expr* expr;
+    varList variables;
+    double result;
 };
 
 #endif // !_EXPRO_H_

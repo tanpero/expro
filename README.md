@@ -40,3 +40,20 @@ and then you can get a static library.
 ## Running the tests
 
 A default testing file is in path `test/main.cc`. If you completely build **expro**, you will get `expro-test` at the same time. Just run it.
+
+## Built With
+
+- [tinyexpr](https://github.com/codeplea/tinyexpr/) - Tiny recursive descent parser and evaluation engine in C.
+
+## Versioning
+
+0.1.0
+
+## Authors
+
+- **[Tanpero](https://github.com/tanpero/)**
+
+## License
+
+This project is licensed under the MIT License.
+
