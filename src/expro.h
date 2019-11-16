@@ -5,6 +5,22 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include <exception>
+
+class ExproException : public std::exception
+{
+public:
+	ExproException(std::string info)
+	{
+		_info = info.c_str();
+	}
+	const char* what()
+	{
+		return _info;
+	}
+private:
+	const char* _info;
+};
 
 class Expro
 {
@@ -14,15 +30,20 @@ public:
 	~Expro();
 
 public:
-	using var = std::vector<std::pair<std::string, double*>>;
+	using var = std::pair<std::string, double*>;
+	using varList = std::vector<var>;
 
 	double value();
-	void setVariables(var _variables);
+
+private:
+	void parse();
+	void parse(varList variables);
 
 private:
 	std::string source;
 	te_expr expr;
-	var variables;
+	varList variables;
+	double result;
 };
 
 #endif // !_EXPRO_H_
