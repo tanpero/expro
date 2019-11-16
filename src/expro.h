@@ -41,7 +41,7 @@ private:
 
 private:
 	std::string source;
-	te_expr expr;
+	te_expr* expr;
 	varList variables;
 	double result;
 };
