@@ -6,6 +6,7 @@
 #include <vector>
 #include <tuple>
 #include <exception>
+#include <functional>
 
 class ExproException : public std::exception
 {
@@ -35,9 +36,26 @@ public:
 
 	double value();
 
-private:
 	void parse();
 	void parse(varList variables);
+
+	using function0 = double(*)(void);
+	using function1 = double(*)(double);
+	using function2 = double(*)(double, double);
+	using function3 = double(*)(double, double, double);
+	using function4 = double(*)(double, double, double, double);
+	using function5 = double(*)(double, double, double, double, double);
+	using function6 = double(*)(double, double, double, double, double, double);
+	using function7 = double(*)(double, double, double, double, double, double, double);
+
+	void bind(std::string name, function0 function);
+	void bind(std::string name, function1 function);
+	void bind(std::string name, function2 function);
+	void bind(std::string name, function3 function);
+	void bind(std::string name, function4 function);
+	void bind(std::string name, function5 function);
+	void bind(std::string name, function6 function);
+	void bind(std::string name, function7 function);
 
 private:
 	std::string source;
