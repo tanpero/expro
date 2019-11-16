@@ -32,11 +32,6 @@ double Expro::value()
 	return te_eval(expr);
 }
 
-Expro Expro::parse()
-{
-	return parse({ {} });
-}
-
 Expro Expro::parse(varList variables)
 {
 	int error;
@@ -44,66 +39,74 @@ Expro Expro::parse(varList variables)
 	return *this;
 }
 
-void Expro::bind(std::string name, function0 function)
+Expro Expro::bind(std::string name, function0 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION0 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function1 function)
+Expro Expro::bind(std::string name, function1 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION1 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function2 function)
+Expro Expro::bind(std::string name, function2 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION2 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function3 function)
+Expro Expro::bind(std::string name, function3 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION3 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function4 function)
+Expro Expro::bind(std::string name, function4 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION4 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function5 function)
+Expro Expro::bind(std::string name, function5 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION5 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function6 function)
+Expro Expro::bind(std::string name, function6 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION6 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 
 
-void Expro::bind(std::string name, function7 function)
+Expro Expro::bind(std::string name, function7 function)
 {
 	int error;
 	te_variable func{ name.c_str(), function, TE_FUNCTION7 };
 	expr = te_compile(source.c_str(), const_cast<const te_variable*>(&func), 1, &error);
+	return *this;
 }
 

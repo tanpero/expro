@@ -36,8 +36,7 @@ public:
 
 	double value();
 
-	Expro parse();
-	Expro parse(varList variables);
+	Expro parse(varList variables = { {} });
 
 	using function0 = double(*)(void);
 	using function1 = double(*)(double);
@@ -48,14 +47,14 @@ public:
 	using function6 = double(*)(double, double, double, double, double, double);
 	using function7 = double(*)(double, double, double, double, double, double, double);
 
-	void bind(std::string name, function0 function);
-	void bind(std::string name, function1 function);
-	void bind(std::string name, function2 function);
-	void bind(std::string name, function3 function);
-	void bind(std::string name, function4 function);
-	void bind(std::string name, function5 function);
-	void bind(std::string name, function6 function);
-	void bind(std::string name, function7 function);
+	Expro bind(std::string name, function0 function);
+	Expro bind(std::string name, function1 function);
+	Expro bind(std::string name, function2 function);
+	Expro bind(std::string name, function3 function);
+	Expro bind(std::string name, function4 function);
+	Expro bind(std::string name, function5 function);
+	Expro bind(std::string name, function6 function);
+	Expro bind(std::string name, function7 function);
 
 private:
 	std::string source;
