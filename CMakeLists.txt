@@ -9,6 +9,8 @@ add_library (expro
   src/expro.cc
 )
 
+set_property(TARGET expro PROPERTY CXX_STANDARD 17)
+
 target_include_directories (expro PUBLIC deps)
 
 add_executable(expro-test test/main.cc)

@@ -1,9 +1,11 @@
 #include "expro.h"
 #include <tinyexpr.h>
 
-inline te_variable pair2tevar(Expro::var pair)
+inline te_variable pair2tevar(Expro::var& pair)
 {
-    te_variable var = { pair.first.c_str(), pair.second };
+	double* argument = pair.second.index() == 0 ? std::get<0>(pair.second) : &std::get<1>(pair.second);
+
+    te_variable var = { pair.first.c_str(), argument };
     return var;
 }
 
@@ -38,6 +40,7 @@ Expro Expro::parse(varList variables)
     expr = te_compile(source.c_str(), translate(variables), variables.size(), &error);
     return *this;
 }
+
 
 Expro Expro::bind(std::string name, function0 function)
 {

@@ -6,7 +6,7 @@
 #include <vector>
 #include <tuple>
 #include <exception>
-#include <functional>
+#include <variant>
 
 class ExproException : public std::exception
 {
@@ -31,7 +31,7 @@ public:
     ~Expro();
 
 public:
-    using var = std::pair<std::string, double*>;
+    using var = std::pair<std::string, std::variant<double*, double>>;
     using varList = std::vector<var>;
 
     double value();
