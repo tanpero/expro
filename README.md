@@ -17,7 +17,7 @@ Using Expro is simple.
 
 ### Installing
 
-Please make sure that `Git` has been installed in your computer.
+Please make sure that `Git` is already installed on your computer.
 
 ```
 # Getting Expro from GitHub
