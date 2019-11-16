@@ -1,14 +1,13 @@
 #include "expro.h"
-#include "arity.h"
 #include <tinyexpr.h>
 
-static inline te_variable pair2tevar(Expro::var pair)
+inline te_variable pair2tevar(Expro::var pair)
 {
 	te_variable var = { pair.first.c_str(), pair.second };
 	return var;
 }
 
-static inline te_variable* translate(Expro::varList vector)
+inline te_variable* translate(Expro::varList vector)
 {
 	te_variable* buffer = new te_variable[vector.size()];
 	if (!vector.empty())
@@ -33,18 +32,16 @@ double Expro::value()
 	return te_eval(expr);
 }
 
-void Expro::parse()
+Expro Expro::parse()
 {
+	return parse({ {} });
 }
 
-void Expro::parse(varList variables)
+Expro Expro::parse(varList variables)
 {
 	int error;
 	expr = te_compile(source.c_str(), translate(variables), variables.size(), &error);
-	if (!expr)
-	{
-		throw ExproException("Invalid expression: " + source);
-	}
+	return *this;
 }
 
 void Expro::bind(std::string name, function0 function)

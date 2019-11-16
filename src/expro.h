@@ -36,8 +36,8 @@ public:
 
 	double value();
 
-	void parse();
-	void parse(varList variables);
+	Expro parse();
+	Expro parse(varList variables);
 
 	using function0 = double(*)(void);
 	using function1 = double(*)(double);
