@@ -26,7 +26,6 @@ Expro::Expro(std::string _source)
 
 Expro::~Expro()
 {
-    te_free(expr);
 }
 
 double Expro::value()

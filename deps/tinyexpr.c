@@ -110,12 +110,6 @@ void te_free_parameters(te_expr *n) {
 }
 
 
-void te_free(te_expr *n) {
-    if (!n) return;
-    te_free_parameters(n);
-    free(n);
-}
-
 
 static double pi(void) {return 3.14159265358979323846;}
 static double e(void) {return 2.71828182845904523536;}

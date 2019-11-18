@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
     std::cout << "x = 10, y = 20,\n  x + y * 2 = "
         << Expro("x + y * 2").parse({{"x", &x}, {"y", &y}}).value() << "\n";
     std::cout << "my_func :: a -> a * 2 + 1,\n  my_func(10) = "
-        << Expro("my_func(10)").bind("my_func", [](double a) { return a * 2 + 1 }).value() << "\n";
+        << Expro("my_func(10)").bind("my_func", [](double a) { return a * 2 + 1; }).value() << "\n";
     return 0;
 }
 ```

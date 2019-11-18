@@ -9,7 +9,7 @@ add_library (expro
   src/expro.cc
 )
 
-set_property(TARGET expro PROPERTY CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
 
 target_include_directories (expro PUBLIC deps)
 

@@ -5,13 +5,14 @@
 int main(int argc, char* argv[])
 {
 	Expro expr1("1 + 2");
-	double x = 10, y = 16;
-	std::cout << "1 + 2 = " << expr1.parse().value() << "\n"
-		<< "x = 10, y = 16, x + y * (x + y) = "
-		<< Expro("x + y * (x + y)").parse({ Expro::var({ "x", &x }),{ "y", &y } }).value() << "\n"
-		<< "sin(60) = " << Expro("sin(60)").parse().value() << "\n"
-		<< "func :: a -> a * 2 + 3, func(20) = "
-		<< Expro("func(20)").bind("func", [](double a) { return a * 2 + 3; }).value() << std::endl;
-
+	std::cout << "1 + 2 = " << expr1.parse().value() << "\n";
+	std::cout << "2 * 8 + 3 = " << Expro("2 * 8 + 3").parse().value() << "\n"
+		<< "7 * (4 - 5 * (6 + 2)) / (2 + 3) = "
+		<< Expro("7 * (4 - 5 * (6 + 2)) / (2 + 3)").parse().value() << "\n";
+	double x = 10, y = 20;
+	std::cout << "x = 10, y = 20,\n  x + y * 2 = "
+		<< Expro("x + y * 2").parse({ { "x", &x },{ "y", &y } }).value() << "\n";
+	std::cout << "my_func :: a -> a * 2 + 1,\n  my_func(10) = "
+		<< Expro("my_func(10)").bind("my_func", [](double a) { return a * 2 + 1; }).value() << "\n";
 	return 0;
 }
